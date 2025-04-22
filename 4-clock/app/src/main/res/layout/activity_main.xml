@@ -7,14 +7,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="12dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/clock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="00:00:00"
-        android:textSize="30sp"
+        android:text="@string/time"
+        android:textSize="40sp"
         android:textColor="@color/black"
         android:textAlignment="center"/>
     
@@ -25,5 +26,5 @@
         android:textAlignment="center"
         android:textSize="15sp"
         android:textColor="@color/black"
-        android:text="Tanggal"/>
+        android:text="@string/tanggal"/>
 </LinearLayout>

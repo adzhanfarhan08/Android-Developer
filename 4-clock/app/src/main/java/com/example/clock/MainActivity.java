@@ -1,24 +1,45 @@
 package com.example.clock;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
+//import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+//import androidx.core.graphics.Insets;
+//import androidx.core.view.ViewCompat;
+//import androidx.core.view.WindowInsetsCompat;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+    private TextView textClock, textDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        textClock = findViewById(R.id.clock);
+        textDate = findViewById(R.id.date);
+
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                @SuppressLint("SimpleDateFormat")
+                DateFormat clockFormat = new SimpleDateFormat("HH:mm:ss");
+
+                @SuppressLint("SimpleDateFormat")
+                DateFormat dateFormat = new SimpleDateFormat("EEEE, dd MMMM yyyy");
+
+                textClock.setText(clockFormat.format(new Date()));
+                textDate.setText(dateFormat.format(new Date()));
+
+                handler.postDelayed(this, 1000);
+            }
         });
     }
 }
