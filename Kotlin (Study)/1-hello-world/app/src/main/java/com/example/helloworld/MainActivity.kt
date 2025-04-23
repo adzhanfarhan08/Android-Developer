@@ -48,10 +48,17 @@ class MainActivity : AppCompatActivity() {
             Log.w("HAN", "This is warning log")
             Log.e("HAN", "This is error log")
 
+            Log.i("ValueResources", resources.getInteger(R.integer.maxPage).toString())
+            Log.i("ValueResources", resources.getBoolean(R.bool.isProductionMode).toString())
+            Log.i("ValueResources", resources.getIntArray(R.array.numbers).joinToString(","))
+            Log.i("ValueResources", resources.getColor(R.color.background, theme).toString())
+
+            sayHelloButton.setBackgroundColor(resources.getColor(R.color.background, theme))
 
             val name = nameEditText.text.toString();
 //            sayHelloTextView.text = "Hi $name!!"
-            sayHelloTextView.text = resources.getString(R.string.sayHelloTextView, name)
+//            sayHelloTextView.text = resources.getString(R.string.sayHelloTextView, name)
+            sayHelloTextView.text = "Hello {name}"
 
             resources.getStringArray(R.array.names).forEach {
                 Log.i("HAN", it)

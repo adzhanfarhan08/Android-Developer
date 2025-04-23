@@ -7,5 +7,5 @@
         <item>300</item>
     </integer-array>
     <bool name="isProductionMode">true</bool>
-    <color name="background">FF0000</color>
+    <color name="background">#FF0000</color>
 </resources>
